@@ -2,12 +2,15 @@
 // Created by nir son on 18/04/2021.
 //
 
-#include <string>
-#include <iostream>
-#include <map>
 
 #ifndef CPP_TASK_3_NUMBERWITHUNITS_HPP
 #define CPP_TASK_3_NUMBERWITHUNITS_HPP
+
+#include <string>
+#include <iostream>
+#include <map>
+#include <vector>
+#include <set>
 
 
 namespace ariel {
@@ -19,10 +22,16 @@ namespace ariel {
         std::string unit;
         static std::map<std::string, std::map<std::string, double>> units_map;
 
-        static void add_unit(std::string unit, std::string dest_unit, double conversion_rate);
+        static void add_unit(const std::string& unit, const std::string& dest_unit, double conversion_rate, std::set<std::string>& visited);
+
+        //NumberWithUnits convert_unit(const std::string& convert_to) const;
 
     public:
-        NumberWithUnits(double number, std::string unit);
+        NumberWithUnits convert_unit(const std::string& convert_to) const;
+
+
+
+        NumberWithUnits(double number, const std::string& unit);
         NumberWithUnits(const NumberWithUnits& other);
         ~NumberWithUnits();
 
@@ -31,10 +40,10 @@ namespace ariel {
         // arithmetic operators
         NumberWithUnits operator+ (const NumberWithUnits& other) const;
         NumberWithUnits& operator+= (const NumberWithUnits& other);
-        const NumberWithUnits operator+() const;
+        NumberWithUnits operator+() const;
         NumberWithUnits operator- (const NumberWithUnits& other) const;
         NumberWithUnits& operator-= (const NumberWithUnits& other);
-        const NumberWithUnits operator-() const;
+        NumberWithUnits operator-() const;
 
         // Comparison operators
         bool operator> (const NumberWithUnits& other) const;
