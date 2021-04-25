@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <map>
 
 #ifndef CPP_TASK_3_NUMBERWITHUNITS_HPP
 #define CPP_TASK_3_NUMBERWITHUNITS_HPP
@@ -16,6 +17,9 @@ namespace ariel {
     private:
         double number;
         std::string unit;
+        static std::map<std::string, std::map<std::string, double>> units_map;
+
+        static void add_unit(std::string unit, std::string dest_unit, double conversion_rate);
 
     public:
         NumberWithUnits(double number, std::string unit);

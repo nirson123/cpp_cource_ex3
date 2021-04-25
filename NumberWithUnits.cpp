@@ -5,6 +5,7 @@
 #include "NumberWithUnits.hpp"
 #include <string>
 #include<iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -22,6 +23,25 @@ ariel::NumberWithUnits::~NumberWithUnits() {
 
 void ariel::NumberWithUnits::read_units(ifstream& ifs) {
 
+    string unit, dest_unit;
+    double conversion_rate;
+    string junk1;
+    double junk2;
+
+    while(ifs){
+        ifs >> junk2 >> unit >> junk1 >> conversion_rate >> dest_unit;
+        add_unit(unit, dest_unit, conversion_rate);
+    }
+}
+
+void ariel::NumberWithUnits::add_unit(string unit, string dest_unit, double conversion_rate){
+
+    units_map[unit][dest_unit] = conversion_rate;
+    units_map[dest_unit][unit] = 1.0 / conversion_rate;
+
+    for (const auto& [key, value] : units_map[dest_unit]){
+        add_unit(unit, key, conversion_rate*value);
+    }
 }
 
 
