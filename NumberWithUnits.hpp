@@ -20,16 +20,13 @@ namespace ariel {
     private:
         double number;
         std::string unit;
-        static std::map<std::string, std::map<std::string, double>> units_map;
 
+        static std::map<std::string, std::map<std::string, double>> units_map;
         static void add_unit(const std::string& unit, const std::string& dest_unit, double conversion_rate, std::set<std::string>& visited);
 
-        //NumberWithUnits convert_unit(const std::string& convert_to) const;
-
-    public:
         NumberWithUnits convert_unit(const std::string& convert_to) const;
 
-
+    public:
 
         NumberWithUnits(double number, const std::string& unit);
         NumberWithUnits(const NumberWithUnits& other);
