@@ -29,32 +29,4 @@ int main(int argc, char** argv) {
     Context context;
     context.addFilter("reporters", "grader");
     return context.run();
-
-//    std::ifstream units_file{"C:\\Users\\nir son\\CLionProjects\\cpp_task_3\\units.txt"};
-//
-//    if(!units_file){std::cout << "ddd";}
-//
-//    double temp1 = 0;
-//    char a = '%';
-//    //ifs >> temp1;
-//    units_file >> a;
-//
-//    std::cout << a;
-//
-//    std::ifstream units_file{"C:\\Users\\nir son\\CLionProjects\\cpp_task_3\\units.txt"};
-//    ariel::NumberWithUnits::read_units(units_file);
-//    ariel::NumberWithUnits n1{1,"km"};
-//    ariel::NumberWithUnits n2{100, "m"};
-//    std::cout << std::boolalpha;
-//
-//    std::cout << n1.convert_unit("m");
-//
-//
-//    //std::cout << (n1==n2);
-//
-//
-//
-//    //ariel::NumberWithUnits::read_units(ifs);
-
-
 }
